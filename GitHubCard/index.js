@@ -20,46 +20,12 @@ function getThem(gitUsername){axios.get(`https://api.github.com/users/${gitUsern
 .catch((err) => {
   console.log('Error fetching data', err)
 })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 getThem('WearyCodes')
 getThem('tetondan')
 getThem('dustinmyers')
 getThem('justsml')
 getThem('luishrd')
 getThem('bigknell')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
