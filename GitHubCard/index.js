@@ -4,6 +4,62 @@
     https://api.github.com/users/<your name>
 */
 
+// let wearyData
+// const weary = axios.get('https://api.github.com/users/WearyCodes')
+// .then((res) => {
+//   wearyData = res.data
+// })
+// .catch((err) => {
+//   console.log('Error fetching data', err)
+// })
+let wearyData = []
+function getThem(gitUsername){axios.get(`https://api.github.com/users/${gitUsername}`)
+.then((res) => {
+  wearyData.push(res.data)
+})
+.catch((err) => {
+  console.log('Error fetching data', err)
+})}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+getThem('WearyCodes')
+getThem('tetondan')
+getThem('dustinmyers')
+getThem('justsml')
+getThem('luishrd')
+getThem('bigknell')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -29,6 +85,67 @@
 */
 
 const followersArray = [];
+let cards = document.querySelector('.cards')
+
+
+
+function creator(object){
+  const Card = document.createElement('div')
+  const cardPicture = document.createElement('img')
+  const cardInfo = document.createElement('div')
+  const cardName = document.createElement('p')
+  const cardUserName = document.createElement('p')
+  const cardLocation = document.createElement('p')
+  const cardProfile = document.createElement('p')
+  const cardAddress = document.createElement('a')
+  const cardFollowers = document.createElement('p')
+  const cardFollowing =document.createElement('p')
+  const cardBio = document.createElement('p')
+
+  cardPicture.src = object.avatar_url
+  cardName.textContent = object.name
+  cardUserName.textContent = object.login
+  cardLocation.textContent = 'Location: ' + object.location
+  cardAddress.textContent = 'Profile: ' + object.html_url
+  cardFollowers.textContent = 'Followers: ' + object.followers
+  cardFollowing.textContent = 'Following: ' + object.following
+  cardBio.textContent = "Bio: " + object.bio
+
+
+Card.classList.add('card')
+cardInfo.classList.add('card-info')
+cardName.classList.add('name')
+cardUserName.classList.add('username')
+
+
+  Card.appendChild(cardPicture)
+  Card.appendChild(cardPicture)
+  Card.appendChild(cardInfo)
+  cardInfo.appendChild(cardName)
+  cardInfo.appendChild(cardUserName)
+  cardInfo.appendChild(cardLocation)
+  cardInfo.appendChild(cardProfile)
+  cardProfile.appendChild(cardAddress)
+  cardInfo.appendChild(cardFollowers)
+  cardInfo.appendChild(cardFollowing)
+  cardInfo.appendChild(cardBio)
+   cards.appendChild(Card)
+   return Card
+}
+
+
+setTimeout(() => {
+  if (wearyData) {
+    wearyData.forEach(person => {
+      creator(person)
+    })
+    
+  } else {
+    console.log("Data not available yet.");
+  }
+}, 1000);
+
+
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
